@@ -37,7 +37,7 @@ async def on_message(message):
                 await client.send_message(message.channel, jump_lyrics[idx + 1])
                 print("Jump lyrics time")
     
-    if message.content == prefix + "ping":
+    if message.content.startswith(prefix + "ping"):
         await client.send_message(message.channel, "Pong!")
         print("Pong!")
 
