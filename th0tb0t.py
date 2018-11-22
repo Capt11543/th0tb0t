@@ -3,7 +3,8 @@ import discord
 
 client = discord.Client()
 
-token = "NTE0NTg4NDc2MDIxMTQ1NjAx.DtYvyQ.W-nuoz4GQQJbHdqrWL09zYmtegw"
+token = "NTE0NTg4NDc2MDIxMTQ1NjAx.Dtej7g.MPhj0eDS5CjFlUUo7Z3mrVRPvOs"
+prefix = '-'
 
 jump_lyrics = [ "I get up, and nothin' gets me down",
                 "You got it tough, I've seen the toughest around",
@@ -35,6 +36,10 @@ async def on_message(message):
             if message.content.lower() == str.lower():
                 await client.send_message(message.channel, jump_lyrics[idx + 1])
                 print("Jump lyrics time")
+    
+    if message.content == prefix + "ping":
+        await client.send_message(message.channel, "Pong!")
+        print("Pong!")
 
     if message.channel.id == "512980566501490700" and message.content.lower() != "f":
         await client.delete_message(message)
