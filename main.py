@@ -12,21 +12,6 @@ client = discord.Client()  # Create a client for the bot to use to do things
 token = "NTE0NTg4NDc2MDIxMTQ1NjAx.Dtej7g.MPhj0eDS5CjFlUUo7Z3mrVRPvOs"
 prefix = '-'  # Prefix for commands
 
-class Duel: # Class for doing duels
-  def __init__(self, message, player1, player2):  # Constructor
-    self.message = message  # Allows me to pass in the message variable from on_message, so there's no errors
-  
-    # TODO: replace with objects of Duel.Player
-    self.player1 = player1
-    self.player2 = player2
-  
-  def initiate():  # Calls when initiating the duel
-    # TODO: grab info from files
-
-    print("Duel started!")
-  
-  #TODO: create inner class Player
-
 jump_lyrics = [ "I get up, and nothin' gets me down",
                 "You got it tough, I've seen the toughest around",
                 "And I know, baby, just how you feel",
