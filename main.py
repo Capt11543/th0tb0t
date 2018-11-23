@@ -51,7 +51,7 @@ async def on_message(message):
       await client.send_message(message.channel, "Pong!")
       print("Pong!")
 
-  if message.channel.id == "512980566501490700" and message.content.lower() != "f":
+  if message.channel.id == "515574829592608769" and message.content.lower() != "f":
     await client.delete_message(message)
     print("PRESS F ONLY :reee:")
 
