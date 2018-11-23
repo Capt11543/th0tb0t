@@ -3,7 +3,7 @@ import discord
 
 client = discord.Client()
 
-token = "NTE0NTg4NDc2MDIxMTQ1NjAx.Dtej7g.MPhj0eDS5CjFlUUo7Z3mrVRPvOs"
+token = "that's a no from me chief"
 prefix = '-'
 
 jump_lyrics = [ "I get up, and nothin' gets me down",
