@@ -9,7 +9,7 @@ import discord
 
 client = discord.Client()  # Create a client for the bot to use to do things
 
-token = "NTE0NTg4NDc2MDIxMTQ1NjAx.Dtej7g.MPhj0eDS5CjFlUUo7Z3mrVRPvOs"
+token = "lol no"
 prefix = '-'  # Prefix for commands
 
 jump_lyrics = [ "I get up, and nothin' gets me down",
