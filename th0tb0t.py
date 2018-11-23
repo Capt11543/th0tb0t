@@ -9,7 +9,7 @@ import discord
 
 client = discord.Client()  # Create a client for the bot to use to do things
 
-token = #Shhhh!  It's a secret!
+token = "NTE0NTg4NDc2MDIxMTQ1NjAx.Dtej7g.MPhj0eDS5CjFlUUo7Z3mrVRPvOs"
 prefix = '-'  # Prefix for commands
 
 jump_lyrics = [ "I get up, and nothin' gets me down",
@@ -53,8 +53,12 @@ async def on_message(message):  # Will run whenever message is sent
       #Checks that there is exactly 1 mention in the message
       if len(message.mentions) == 1:
         target = message.mentions[0]  # Stores the mention in the message in a variable
+        
+        #Alert opponent about duel challenge
         await client.send_message(message.channel, "Heads up " + target.mention + "!  " + message.author.mention + " has challenged you to a duel!")
-        await client.send_message(message.channel, "Unfortunately, there's not much you can do about that right now.  More dueling functionality coming soon!")
+        await client.send_message(message.channel, "Unfortunately, there's not much you can do about that right now.  More dueling functionality coming soon!")  # Temporary
+
+        print("Someone challenged someone else to a duel!")
       elif len(message.mentions) < 1:  # In case they didn't mention anyone
         await client.send_message(message.channel, "You must mention your desired opponent!")
       elif len(message.mentions) > 1:  # In case they mention more than one person
