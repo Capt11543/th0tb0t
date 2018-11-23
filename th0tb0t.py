@@ -36,6 +36,10 @@ async def on_message(message):
             if message.content.lower() == str.lower():
                 await client.send_message(message.channel, jump_lyrics[idx + 1])
                 print("Jump lyrics time")
+              
+    if message.content.startswith(prefix + "help"):
+        await client.send_message(message.channel, "UH OH HELP!") # Temporary help message, replace with command names and possibly add a link to dueling rules doc
+        print("halppls") # Tells me that someone is asking for help with the bot, and that you should answer their questions
     
     if message.content.startswith(prefix + "ping"):
         await client.send_message(message.channel, "Pong!")
