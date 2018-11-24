@@ -57,7 +57,7 @@ async def on_message(message):  # Will run whenever message is sent
         
         #Alert opponent about duel challenge
         await client.send_message(message.channel, "Heads up " + target.mention + "!  " + message.author.mention + " has challenged you to a duel!")
-        active_duel = Duel(message, message.author, target)
+        active_duel = Duel(message, client, message.author, target)
 
         print("Someone challenged someone else to a duel!")
       elif len(message.mentions) < 1:  # In case they didn't mention anyone
