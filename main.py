@@ -3,13 +3,14 @@ th0t b0t by Capt#4328
 Note to collaborators: The indentation for this program is 2 spaces!
 '''
 
-# Import libraries
+# Import modules
 import asyncio
 import discord
+from dueling import Duel
 
 client = discord.Client()  # Create a client for the bot to use to do things
 
-token = "lol no"
+token = "that's a no from me chief"
 prefix = '-'  # Prefix for commands
 
 jump_lyrics = [ "I get up, and nothin' gets me down",
@@ -56,7 +57,7 @@ async def on_message(message):  # Will run whenever message is sent
         
         #Alert opponent about duel challenge
         await client.send_message(message.channel, "Heads up " + target.mention + "!  " + message.author.mention + " has challenged you to a duel!")
-        await client.send_message(message.channel, "Unfortunately, there's not much you can do about that right now.  More dueling functionality coming soon!")  # Temporary
+        active_duel = Duel(message, message.author, target)
 
         print("Someone challenged someone else to a duel!")
       elif len(message.mentions) < 1:  # In case they didn't mention anyone
