@@ -54,5 +54,9 @@ async def on_message(message):
   if message.channel.id == "515574829592608769" and message.content.lower() != "f":
     await client.delete_message(message)
     print("PRESS F ONLY :reee:")
+  
+  if not message.channel.id == "515575113945710593" and ((" owo " in message.content.lower() or " uwu " in message.content.lower()) or (message.content.lower().startswith("owo") or message.content.lower().startswith("uwu") or (message.content.lower().endswith("owo") or message.content.lower().endswith("uwu")))):
+    await client.delete_message(message)
+    print("OwO quarantined successfully")
 
 client.run(token)
