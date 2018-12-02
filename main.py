@@ -55,7 +55,7 @@ async def on_message(message):
     await client.delete_message(message)
     print("PRESS F ONLY :reee:")
   
-  if not message.channel.id == "515575113945710593" and "owo" in message.content.lower:
+  if not message.channel.id == "515575113945710593" and "owo" in message.content.lower():
     await client.delete_message(message)
     print("OwO quarantined successfully")
     await client.send_message(message.channel, "git ur stinkin anime outta my channel, t h 0 t")
