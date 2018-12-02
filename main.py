@@ -55,9 +55,11 @@ async def on_message(message):
     await client.delete_message(message)
     print("PRESS F ONLY :reee:")
   
-  if not message.channel.id == "515575113945710593" and "owo" in message.content.lower():
-    await client.delete_message(message)
-    print("OwO quarantined successfully")
-    await client.send_message(message.channel, "git ur stinkin anime outta my channel, t h 0 t")
+  # Quarantining OwOs
+  if not message.channel.id == "515575113945710593" and "owo" in message.content.lower() or "uwu" in message.content.lower():  # Checks for messages containing "owo" or "uwu"
+    await client.delete_message(message)  # Deletes messages
+    await client.send_message(message.channel, "git ur stinkin anime outta my channel, t h 0 t")  # Responds with a meme-y message
+    
+    print("OwO quarantined successfully")  # Tells me that someone OwOd
 
 client.run(token)
