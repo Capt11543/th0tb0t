@@ -43,6 +43,7 @@ async def on_message(message):
       help_embed.set_author(name = "Help")  # Embed title (because the actual title field isn't very useful)
       help_embed.add_field(name = "-help", value = "Shows this message", inline = False)  # Add field that describes the help command
       help_embed.add_field(name = "-ping", value = "Pong!", inline = False)  # Add field that describes the ping command
+      help_embed.add_field(name = "-say", value = "th0t b0t will say anything you want it to!  He'll even delete your request, to hide the evidence.  (Please be nice!)")  # Add field that describes the say command
 
       await client.send_message(message.channel, embed=help_embed) # Temporary help message, replace with command names and possibly add a link to dueling rules doc
       print("halppls") # Tells me that someone is asking for help with the bot, and that you should answer their questions
@@ -50,6 +51,20 @@ async def on_message(message):
     if message.content.startswith(prefix + "ping"):
       await client.send_message(message.channel, "Pong!")
       print("Pong!")
+    
+    # say command
+    if message.content.startswith(prefix + "say"):
+      if len(message.content) > 5:  # Checks that the user actually included something for the bot to say
+        output = message.content[5:]  # Stores the desired output into its own variable
+
+        await client.send_message(message.channel, output)  # Responds with the desired message
+        await client.delete_message(message)  # Deletes the original message (to hide the evidence!)
+
+        print("OK, there, I said it!")  # Lets me know that someone has triggered this action successfully
+      else:
+        await client.send_message(message.channel, "Come on, man, you gotta give me something to say!")  # Lets user know that they didn't provide enough information
+
+        print("I didn't say anything.  I couldn't say anything!")  # Lets me know that someone has triggered this action unsuccessfully
 
   if message.channel.id == "515574829592608769" and message.content.lower() != "f":
     await client.delete_message(message)
