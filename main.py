@@ -49,21 +49,34 @@ async def on_message(message):  # Will run whenever message is sent
       await client.send_message(message.channel, "Pong!")  # Sends reply
       print("Pong!")  # Lets me know that someone has triggered this action
         
-    #sahdude command (for dueling!)
-    if message.content.startswith(prefix + "sahdude"):
-      #Checks that there is exactly 1 mention in the message
+    # Duel related commands!
+    if message.content.startswith(prefix + "sahdude") and active_duel == 0:  # sahdude command if there is not an active duel
+      # Checks that there is exactly 1 mention in the message
       if len(message.mentions) == 1:
         target = message.mentions[0]  # Stores the mention in the message in a variable
-        
-        #Alert opponent about duel challenge
+
+        # Alert opponent about duel challenge
         await client.send_message(message.channel, "Heads up " + target.mention + "!  " + message.author.mention + " has challenged you to a duel!")
+        await client.send_message(message.channel, "To accept the duel, type -sahdude back.  To decline, type -fingerguns.")
         active_duel = Duel(message, client, message.author, target)
 
         print("Someone challenged someone else to a duel!")
-      elif len(message.mentions) < 1:  # In case they didn't mention anyone
-        await client.send_message(message.channel, "You must mention your desired opponent!")
-      elif len(message.mentions) > 1:  # In case they mention more than one person
-        await client.send_message(message.channel, "Easy there!  You can only duel one person at a time!")
+    elif len(message.mentions) < 1:  # In case they didn't mention anyone
+      await client.send_message(message.channel, "You must mention your desired opponent!")
+    elif len(message.mentions) > 1:  # In case they mention more than one person
+      await client.send_message(message.channel, "Easy there!  You can only duel one person at a time!")
+    elif message.content.startswith(prefix + "sahdude") and not active_duel == 0 and message.author == active_duel.player2:  # sahdude command if there is an active duel and the user is the challenged
+       # Notify the user that the duel was accepted successfully
+      await client.send_message(message.channel, "Hey, look at that!  You accepted the duel!")
+      await client.send_message(message.channel, "Soon, more stuff is going to happen, but in the meantime, just enjoy this moment!")
+    elif message.content.startswith(prefix + "sahdude") and not active_duel == 0 and not message.author == active_duel.player2:
+      await client.send_message(message.channel, "There's already a duel going on and you weren't challenged to it.  Sorry!")  # Notify the user that they can't use this command at the moment
+    if message.content.startswith(prefix + "fingerguns") and active_duel == 0 or (not active_duel == 0 and not message.author == active_duel.player2):  # fingerguns command for when the user is not challenged or there is no duel (it will have the same output either way)
+       await client.send_message(message.channel, "You are not being challenged to a duel!")  # Notify the user that they are not challenged to a duel
+    elif message.content.startswith(prefix + "fingerguns") and not active_duel == 0 and message.author == active_duel.player2:
+        await client.send_message(message.channel, active_duel.player1 + " It looks like your opponent has surrendered.  Oh well, maybe next time!")  # Notifies challenger of surrender
+
+        active_duel = None  # Resets active_duel to None
 
   if message.channel.id == "512980566501490700" and message.content.lower() != "f":  # Checks for messages that aren't "f" in #press-f (not case-sensitive)
     await client.delete_message(message)  # Deletes the offending message
